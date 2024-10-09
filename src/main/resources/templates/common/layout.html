@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8" content="text/html">
+  <title th:text="${title}">Title</title>
+  <!--/* 共通CSS */-->
+  <link rel="stylesheet" type="text/css" th:href="@{/plugins/bootstrap-5.3.0-dist/css/bootstrap.min.css}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+</head>
+
+<body data-bs-theme="dark">
+<div id="root" class="d-flex vh-100">
+  <div class="flex-grow-1">
+    <!--/* 上部ナビゲーションバー */-->
+    <ul id="root-navigation" class="nav nav-tabs justify-content-center">
+      <li class="nav-item" th:with="path = @{/scripts}">
+        <a class="nav-link" th:href="${path}" th::class="|{ active: isActive('${path}', true) }|">Script</a>
+      </li>
+      <li class="nav-item" th:with="path = @{/er}">
+        <a class="nav-link" th:href="${path}" th::class="|{ active: isActive('${path}') }|">ER Diagram</a>
+      </li>
+    </ul>
+    <!--/* コンテンツ */-->
+    <th:block layout:fragment="contents" class="p-3" />
+  </div>
+  <!--/* 追加コンテンツ(モーダルなど) */-->
+  <th:block layout:fragment="additional-contents" />
+</div>
+
+<!--/* 共通JS */-->
+<script type="text/javascript" th:src="@{/plugins/bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js}"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/vee-validate"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vee-validate/rules@4.13.2/dist/vee-validate-rules.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/swapy/dist/swapy.min.js"></script>
+<script type="module" th:src="@{/js/common/index.js}"></script>
+<!--/* JS */-->
+<th:block layout:fragment="scripts" />
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--/* Offcanvas */-->
+<div th:fragment="offcanvas(placement='end', title, body)" id="offcanvas" th:class="|offcanvas offcanvas-${placement}|" tabindex="-1" th:aria-labelledby="${title}">
+  <div class="offcanvas-header">
+    <h5 th:if="${title}" class="offcanvas-title" th:text="${title}">Offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <th:block th:replace="${body}" />
+  </div>
+</div>
+
+</html>

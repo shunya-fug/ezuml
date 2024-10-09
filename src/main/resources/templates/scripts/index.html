@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout}">
+
+<!--/* コンテンツ */-->
+<div layout:fragment="contents">
+  <main>
+    <div class="container">
+      <code>
+        <textarea v-model="script" class="form-control" rows="30"></textarea>
+      </code>
+      <button @click="showImage" type="button" class="btn">送信</button>
+    </div>
+  </main>
+</div>
+
+<!--/* 追加コンテンツ */-->
+<th:block layout:fragment="additional-contents">
+  <th:block th:replace="~{common/components :: offcanvas('bottom', 'PlantUML画像', ~{::div#previewImageContainer})}">
+    <div id="previewImageContainer">
+      <img v-if="imageSrc != ''" :src="imageSrc" />
+    </div>
+  </th:block>
+</th:block>
+
+<!--/* JS */-->
+<th:block layout:fragment="scripts">
+  <script type="module" th:src="@{/js/scripts/index.js}"></script>
+</th:block>
+
+</html>

@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: admin-kotlin
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:55432/ezuml
+    username: admin
+    password: admin
+
+  security:
+    user:
+      name: a
+      password: a
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+logging:
+  level:
+    com.app.admin.mapper: TRACE
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
